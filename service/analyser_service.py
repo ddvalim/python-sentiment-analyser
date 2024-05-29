@@ -7,7 +7,6 @@ from transformers import BertTokenizer
 from core.ports import classifier as c
 
 with open("config.json") as json_file:
-
     config = json.load(json_file)
 
 class Analyser_Service():
@@ -19,7 +18,7 @@ class Analyser_Service():
         self.device = torch.device('cpu')
 
         # Instância da classe Classifier, responsável por processar a informação
-        classifier = c.Classifier()
+        classifier = c.Classifier(len(config['CLASS_NAMES']))
 
         # Atribuí à instância Classifier o universo de vocabulário do modelo
         classifier.load_state_dict(torch.load(config['PRE_TRAINED_MODEL'], map_location=self.device))

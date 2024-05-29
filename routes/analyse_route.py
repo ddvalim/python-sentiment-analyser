@@ -6,6 +6,13 @@ def register_route(app, analyser_controller):
     def analyse():
         text = request.form.get('text')
 
-        res = analyser_controller.analyse(text)
+        predicted_class, confidence, probabilities = analyser_controller.analyse(text)
+
+        print(predicted_class)
+        print(confidence)
+        print(probabilities)
         
-        return 'analyser'
+        return jsonify(
+            predicted_class=predicted_class,
+            confidence=confidence
+        )
