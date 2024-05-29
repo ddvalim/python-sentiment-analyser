@@ -15,6 +15,7 @@ Este projeto foi desenvolvido utilizando a linguagem de programação __Python__
 - [Python versão 3.10.6 - Linguagem de Programação](https://www.python.org/downloads/)
 - [pip - Gerenciador de Pacotes](https://pip.pypa.io/en/stable/installation/)
 - [python3-venv - Gerenciador de Ambientes Virtuais](https://medium.com/@LogeshSakthivel/python-virtual-env-in-windows-and-linux-4a2d4a6030cf)
+- [Modelo BERT pré-treinado](https://drive.google.com/uc?id=1V8itWtowCYnb2Bc9KlK9SxGff9WwmogA)
 
 ### Instalação
 
@@ -22,6 +23,7 @@ Este projeto foi desenvolvido utilizando a linguagem de programação __Python__
 2. Certifique-se de que as ferramentas citadas anteriormente já estejam instaladas e configuradas na sua máquina.
 3. Ative o ambiente virtual Python.
 4. Instale os *requirements* do projeto com o comando `pip install -r requirements.txt`
+5. Baixe o Modelo BERT pré-treinado e o adicione à pasta `assets`
 
 
 ### Executando o programa
