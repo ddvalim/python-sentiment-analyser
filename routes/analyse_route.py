@@ -3,19 +3,18 @@ from controller import analyser_controller
 
 def register_route(app):
 
-    @app.route('/',methods=['GET'])
+    @app.route('/analyse',methods=['POST'])
     def analyse():
-        text = request.form.get('text')
+        body = request.get_json('text')
 
         ctrl = analyser_controller.Analyser_Controller()
 
-        predicted_class, confidence, probabilities = ctrl.analyse(text)
+        predicted_class, confidence, probabilities = ctrl.analyse(body['text'])
 
         print(predicted_class)
         print(confidence)
         print(probabilities)
         
         return jsonify(
-            predicted_class=predicted_class,
-            confidence=confidence
+            predicted_class=predicted_class
         )
