@@ -10,8 +10,8 @@ class Classifier(nn.Module):
     def __init__(self, n_classes):
         super(Classifier, self).__init__()
 
-        self.model = BertModel.from_pretrained(config['BERT_MODEL'])
-        self.drop = nn.Dropout(0.3)
+        self.model = BertModel.from_pretrained(config["BERT_MODEL"], return_dict=False)
+        self.drop = nn.Dropout(p=0.3)
         self.out = nn.Linear(self.model.config.hidden_size, n_classes)
 
     def forward(self, ids, attention_mask):

@@ -1,8 +1,10 @@
+from service import analyser_service
+
 class Analyser_Controller():
-    def __init__(self, analyser_service) -> None:
-        self.__analyser_service = analyser_service
+    def __init__(self):
+        self.__analyser_service = analyser_service.get_service()
 
     def analyse(self, text: str):
-        # todo: add data validation
-        
-        return self.__analyser_service.analyse(text)
+        svc = analyser_service.get_service()
+
+        return svc.analyse(text)

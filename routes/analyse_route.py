@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify
+from controller import analyser_controller
 
-def register_route(app, analyser_controller):
+def register_route(app):
 
     @app.route('/',methods=['GET'])
     def analyse():
         text = request.form.get('text')
 
-        predicted_class, confidence, probabilities = analyser_controller.analyse(text)
+        ctrl = analyser_controller.Analyser_Controller()
+
+        predicted_class, confidence, probabilities = ctrl.analyse(text)
 
         print(predicted_class)
         print(confidence)

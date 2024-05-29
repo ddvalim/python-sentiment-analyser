@@ -11,14 +11,14 @@ with open("config.json") as json_file:
 
 class Analyser_Service():
     def __init__(self) -> None:
+        # Determina o dispositivo onde o modelo executará
+        self.device = torch.device('cpu')
+        
         # Instância da classe tokenizer, responsável por transformar texto em unidades menores chamadas tokens
         self.tokenizer = BertTokenizer.from_pretrained(config['BERT_MODEL'])
 
-        # Determina o dispositivo onde o modelo executará
-        self.device = torch.device('cpu')
-
         # Instância da classe Classifier, responsável por processar a informação
-        classifier = c.Classifier(len(config['CLASS_NAMES']))
+        classifier = c.Classifier(len(config["CLASS_NAMES"]))
 
         # Atribuí à instância Classifier o universo de vocabulário do modelo
         classifier.load_state_dict(torch.load(config['PRE_TRAINED_MODEL'], map_location=self.device))
@@ -67,3 +67,6 @@ class Analyser_Service():
             confidence,
             dict(zip(config["CLASS_NAMES"], probabilities)),
         )
+    
+def get_service():
+    return Analyser_Service()
